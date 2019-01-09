@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://2981047480.github.io/"/>
-  <updated>2019-01-04T15:15:30.062Z</updated>
+  <updated>2019-01-05T12:55:29.269Z</updated>
   <id>https://2981047480.github.io/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>今日总结</title>
+    <link href="https://2981047480.github.io/2019/01/05/2019-1-5/"/>
+    <id>https://2981047480.github.io/2019/01/05/2019-1-5/</id>
+    <published>2019-01-04T16:00:00.000Z</published>
+    <updated>2019-01-05T12:55:29.269Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="今日总结"><a href="#今日总结" class="headerlink" title="今日总结"></a>今日总结</h1><a id="more"></a><h3 id="1-配完了主题"><a href="#1-配完了主题" class="headerlink" title="1.配完了主题"></a>1.配完了主题</h3><h3 id="2-码了一会代码"><a href="#2-码了一会代码" class="headerlink" title="2.码了一会代码"></a>2.码了一会代码</h3><h3 id="3-vs插件装好了"><a href="#3-vs插件装好了" class="headerlink" title="3.vs插件装好了"></a>3.vs插件装好了</h3><h3 id="4-发现了GitHub的新大陆"><a href="#4-发现了GitHub的新大陆" class="headerlink" title="4.发现了GitHub的新大陆"></a>4.发现了GitHub的新大陆</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;今日总结&quot;&gt;&lt;a href=&quot;#今日总结&quot; class=&quot;headerlink&quot; title=&quot;今日总结&quot;&gt;&lt;/a&gt;今日总结&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="总结" scheme="https://2981047480.github.io/tags/%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
     <title>2019.1.4学习记录</title>
     <link href="https://2981047480.github.io/2019/01/04/2019-1-4%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     <id>https://2981047480.github.io/2019/01/04/2019-1-4学习记录/</id>
     <published>2019-01-04T15:12:38.000Z</published>
-    <updated>2019-01-04T15:15:30.062Z</updated>
+    <updated>2019-01-05T12:38:05.866Z</updated>
     
     <content type="html"><![CDATA[<h1 id="今日成果"><a href="#今日成果" class="headerlink" title="今日成果"></a>今日成果</h1><a id="more"></a><p>1.用markdown做完了博客<br>2.换了博客的主题<br>3.虽然经历了波折，但是学到了一些东西</p>]]></content>
     
@@ -31,6 +51,8 @@
     
     </summary>
     
+    
+      <category term="总结" scheme="https://2981047480.github.io/tags/%E6%80%BB%E7%BB%93/"/>
     
   </entry>
   

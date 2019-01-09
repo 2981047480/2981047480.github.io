@@ -65,27 +65,7 @@ bool copytonode(list *plist, item *pitem)       //拷贝项至链表
 	}
 }
 
-bool addnode(list *plist, item *pitem)          //往链表中添加节点
-{
-	node *pnode;
-	node *scan;
-
-	pnode = (node *)malloc(sizeof(node));
-	if (pnode == NULL)
-	{
-		return false;
-	}
-
-	scan = pnode->next;
-	if (scan != NULL)
-	{
-		scan = scan->next;
-	}
-	copytonode(plist, pitem);
-	return true;
-}
-
-bool emptythelist(list *plist)                  //摧毁整个链表
+bool distorythelist(list *plist)                  //摧毁整个链表
 {
 	node *pnode;
 	while (plist->next != NULL)
@@ -113,4 +93,53 @@ void travelthelist(list *plist)                 //遍历链表
 {
 	node *scan;
 	scan = plist->next;
+
+	while (scan->next!=NULL)
+	{
+		shownode(scan);
+		scan = scan->next;
+	}
+}
+
+bool searchitem(char name,list *plist)          //查找项
+{
+	printf("请输入要查找的学生姓名\n");
+	scanf_s("%s", &name);
+
+	node *pnode;
+	pnode = plist->next;
+	while (name!=plist->Item->name)
+	{
+		pnode = pnode->next;
+		if (pnode->next==NULL)
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+bool addnode(list *plist, item *pitem)          //插
+{
+	node *pnode;
+	node *scan;
+	char pname;
+	scanf_s("%s", &pname);
+
+	scanf_s("%s",&pitem->name);
+	scanf_s("%")
+
+	pnode = (node *)malloc(sizeof(node));
+	if (pnode == NULL)
+	{
+		return false;
+	}
+
+	scan = pnode->next;
+	if (scan != NULL)
+	{
+		scan = scan->next;
+	}
+	copytonode(plist, pitem);
+	return true;
 }
