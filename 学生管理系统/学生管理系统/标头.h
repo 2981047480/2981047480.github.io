@@ -22,6 +22,7 @@ void intializelist(list *plist)                //初始化链表
 bool listisfull(list *plist)                   //判断链表是否已满
 {
 	node *pt;
+	pt = NULL;
 	list *pnew;
 	pnew = plist;
 
@@ -50,6 +51,7 @@ bool listisempty(list *plist)                   //判断链表是否为空
 bool copytonode(list *plist, item *pitem)       //拷贝项至链表
 {
 	node *pnode;
+	pnode = NULL;
 
 	pnode->Item->name = pitem->name;
 	pnode->Item->number = pitem->number;
@@ -86,7 +88,8 @@ bool distorythelist(list *plist)                  //摧毁整个链表
 
 void shownode(node *pnode)                      //展示一个节点中的项
 {
-	printf("%s %d %d %d %d %d", pnode->Item->name, pnode->Item->number, pnode->Item->score1, pnode->Item->score2, pnode->Item->score3);
+	printf("姓名 学号 语文成绩 数学成绩 英语成绩\n");
+	printf("%s %d %d %d %d %d\n", pnode->Item->name, pnode->Item->number, pnode->Item->score1, pnode->Item->score2, pnode->Item->score3);
 }
 
 void travelthelist(list *plist)                 //遍历链表
@@ -94,24 +97,32 @@ void travelthelist(list *plist)                 //遍历链表
 	node *scan;
 	scan = plist->next;
 
-	while (scan->next!=NULL)
+	while (scan->next != NULL)
 	{
 		shownode(scan);
 		scan = scan->next;
 	}
 }
 
-bool searchitem(char name,list *plist)          //查找项
+bool search_student_by_name(char name, list *plist)          //根据名字查找项
 {
 	printf("请输入要查找的学生姓名\n");
 	scanf_s("%s", &name);
 
 	node *pnode;
 	pnode = plist->next;
-	while (name!=plist->Item->name)
+	while (true)
 	{
-		pnode = pnode->next;
-		if (pnode->next==NULL)
+		if (name != plist->Item->name)
+		{
+			pnode = pnode->next;
+		}
+		else
+		{
+			shownode(pnode);
+		}
+
+		if (pnode->next == NULL)
 		{
 			return false;
 		}
@@ -119,27 +130,245 @@ bool searchitem(char name,list *plist)          //查找项
 	return true;
 }
 
+bool search_student_by_score(int score, list *plist) //根据成绩查找学生
+{
+	node *scan;
+	scan = plist->next;
+	printf("请输入要查找的成绩\n");
+	scanf_s("%d", &score);
+
+	while (true)
+	{
+		if (score == plist->Item->score1&&score == plist->Item->score2&&score == plist->Item->score3)
+		{
+			shownode(scan);
+		}
+
+		if (scan->next == NULL)
+		{
+			return false;
+		}
+		scan = scan->next;
+	}
+	return true;
+}
+
+bool search_student_by_number(int number, list *plist)  //学号查找学生
+{
+	node *scan;
+	scan = plist->next;
+	printf("请输入学生学号\n");
+
+	while (true)
+	{
+		if (number == plist->Item->number)
+		{
+			shownode(scan);
+		}
+		if (scan->next == NULL)
+		{
+			return false;
+		}
+		scan = scan->next;
+	}
+	return true;
+}
+
+int search_student_by_name1(char name, list *plist)          //根据名字查找项(返回数字)
+{
+	int count = 0;
+	printf("请输入要查找的学生姓名\n");
+	scanf_s("%s", &name);
+
+	node *pnode;
+	pnode = plist->next;
+	while (true)
+	{
+		if (name == plist->Item->name)
+		{
+			shownode(pnode);
+		}
+		if (pnode->next != NULL)
+		{
+			pnode = pnode->next;
+		}
+		else
+		{
+			break;
+		}
+
+		count++;
+	}
+	return count;
+}
+
+int search_student_by_score1(int score, list *plist) //根据成绩查找学生
+{
+	int count = 0;
+	node *scan;
+	scan = plist->next;
+	printf("请输入要查找的成绩\n");
+	scanf_s("%d", &score);
+
+	while (true)
+	{
+		if (score == plist->Item->score1&&score == plist->Item->score2&&score == plist->Item->score3)
+		{
+			shownode(scan);
+		}
+		if (scan->next != NULL)
+		{
+			scan = scan->next;
+		}
+		else
+		{
+			break;
+		}
+		count++;
+	}
+	return count;
+}
+
+int search_student_by_number1(int number, list *plist)  //学号查找学生
+{
+	int count;
+	node *scan;
+	scan = plist->next;
+	printf("请输入学生学号\n");
+	scanf("%d", number);
+
+	while (true)
+	{
+		if (number == scan->Item->number)
+		{
+			shownode(scan);
+		}
+
+		if (scan->next != NULL)
+		{
+			scan = scan->next;
+		}
+		else
+		{
+			break;
+		}
+		count++;
+	}
+	return count;
+}
+
 bool addnode(list *plist, item *pitem)          //插
 {
 	node *pnode;
 	node *scan;
+	int a, b, score, number;
+	bool c;
+	int count = 1;
 	char pname;
-	scanf_s("%s", &pname);
+	printf("请选择查找模式\n");
+	printf("1.姓名查找\n");
+	printf("2.学号查找\n");
+	printf("3.成绩查找\n");
+	scanf_s("%d", &a);
+	switch (a)
+	{
+	case 1:
+	{
+		printf("请输入要查找的姓名\n");
+		scanf_s("%s", &pname);
+		c = search_student_by_name(pname, plist);
+		if (c == false)
+		{
+			printf("您所搜索的姓名不存在\n");
+		}
+		else
+		{
+			b = search_student_by_name1(pname, plist);
+		}
+	}; break;
+	case 2:
+	{
+		printf("请输入要查找的学号\n");
+		scanf_s("%d", &number);
+		c = search_student_by_number(number, plist);
+		if (c == false)
+		{
+			printf("您查找的学号不存在\n");
+		}
+		else
+		{
+			b = search_student_by_number1(number, plist);
+		}
+	}; break;
+	case 3:
+	{
+		printf("请输入要查找的成绩\n");
+		scanf_s("%d", &score);
+		c = search_student_by_score(score, plist);
+		if (c == false)
+		{
+			printf("您搜索的成绩不存在\n");
+		}
+		else
+		{
+			b = search_student_by_score1(score, plist);
+		}
+	}; break;
+	default:
+		break;
+	}
+}
 
-	scanf_s("%s",&pitem->name);
-	scanf_s("%")
+bool addnode1(list *plist, item *pitem)//头插法
+{
+	node *pnode;
+	node *scan;
+	printf("请输入要添加的姓名\n");
+	scanf_s("%s", &pitem->name);
+	printf("请输入学号\n");
+	scanf_s("%d", &pitem->number);
+	printf("请输入数学成绩\n");
+	scanf_s("%d", &pitem->score1);
+	printf("请输入语文成绩\n");
+	scanf_s("%d", &pitem->score2);
+	printf("请输入英语成绩\n");
+	scanf_s("%d", &pitem->score3);
 
 	pnode = (node *)malloc(sizeof(node));
 	if (pnode == NULL)
 	{
 		return false;
 	}
-
 	scan = pnode->next;
-	if (scan != NULL)
+	copytonode(scan, pitem);
+	scan->next = plist->next->next;
+	plist->next->next = scan;
+
+	return true;
+}
+
+void deletenode(list *plist)
+{
+	node *pnode;
+	node *scan = plist->next;
+	int a;
+	int count = 0;
+	char name;
+	printf("请输入要删除的学生姓名\n");
+	scanf("%s", &name);
+	a = search_student_by_name1(name, plist);
+	while (count < a)
 	{
 		scan = scan->next;
+		count++;
 	}
-	copytonode(plist, pitem);
-	return true;
+	pnode = scan->next;
+	scan->next = pnode;
+}
+
+bool creatlist()
+{
+	list *head;
+	intializelist(head);
+	head->next = NULL;
 }
